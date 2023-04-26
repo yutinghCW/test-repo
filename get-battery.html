@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>getBattery</title>
+</head>
+<body>
+	<div class="level"></div>
+	<div class="charging"></div>
+	<div class="chargingTime"></div>
+	<div class="dischargingTime"></div>
+	<div class="navigator"></div>
+</body>
+<script>
+	navigator.getBattery().then(function (battery) {
+	  // 獲取電量剩餘百分比
+	  let level = battery.level; //最大值為1,對應電量100%
+	  document.querySelector(".level").innerText = `Level：${level * 100}%`;
+
+	  // 獲取充電狀態
+	  let charging = battery.charging;
+	  document.querySelector(".charging").innerText = `充電狀態：${charging}`;
+
+	  // 獲取完全充電需要的時間
+	  let chargingTime = battery.chargingTime;
+	  document.querySelector(".chargingTime").innerText = `完全充電需要的時間：${chargingTime}`;
+
+	  // 獲取完全放電需要的時間
+	  let dischargingTime = battery.dischargingTime;
+	  document.querySelector(".dischargingTime").innerText = `完全放電需要的時間：${dischargingTime}`;
+	});
+</script>
+</html>
